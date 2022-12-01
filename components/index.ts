@@ -1,3 +1,4 @@
-import AnimatedBox from "./AnimatedBox/AnimatedBox";
+import AnimatedBox from "./AnimatedBox";
+import CameraOrbitController from "./CameraOrbitController";
 
-export { AnimatedBox }
+export { AnimatedBox, CameraOrbitController };
