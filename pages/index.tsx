@@ -4,8 +4,6 @@ import style from '../styles/Home.module.css'
 import { AnimatedBox } from '../components'
 
 
-
-
 const Home: NextPage = () => {
   return (
     <div className={style.container}>
