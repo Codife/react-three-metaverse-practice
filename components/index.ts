@@ -1,3 +1,6 @@
 import AnimatedBox from "./AnimatedBox";
+import Ground from "./Ground";
+import Lights from "./Lights";
 
-export { AnimatedBox };
+
+export { AnimatedBox, Lights, Ground };

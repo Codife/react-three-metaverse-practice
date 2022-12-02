@@ -1,14 +1,11 @@
 import type { NextPage } from 'next'
 import { Canvas } from '@react-three/fiber'
 import style from '../styles/Home.module.css'
-import { AnimatedBox } from '../components'
+import { Ground, Lights } from '../components'
 import { OrbitControls, Stats, useTexture } from '@react-three/drei'
 
 const TexturedSpheres = () => {
   const map = useTexture('./textures/rock_boulder_cracked_diff_1k.png')
-  const displacementMap = useTexture(
-    './textures/rock_boulder_cracked_disp_1k.png',
-  )
   const normalMap = useTexture('./textures/rock_boulder_cracked_nor_gl_1k.png')
   const roughnessMap = useTexture(
     './textures/rock_boulder_cracked_rough_1k.png',
@@ -16,13 +13,13 @@ const TexturedSpheres = () => {
 
   return (
     <>
-      {/* low graphics */}
+      {/* low graphics
       <mesh scale={[0.5, 0.5, 0.5]} position={[-1, 0, 0]}>
         <sphereGeometry />
         <meshStandardMaterial map={map} />
-      </mesh>
+      </mesh> */}
       {/* mid graphics */}
-      <mesh scale={[0.5, 0.5, 0.5]} position={[0, 0, 0]}>
+      <mesh scale={[0.5, 0.5, 0.5]} position={[0, 1, 0]} castShadow>
         <sphereGeometry />
         <meshStandardMaterial
           map={map}
@@ -30,7 +27,7 @@ const TexturedSpheres = () => {
           roughnessMap={roughnessMap}
         />
       </mesh>
-      {/* high graphics */}
+      {/* high graphics
       <mesh scale={[0.5, 0.5, 0.5]} position={[1, 0, 0]}>
         <sphereGeometry args={[1, 100, 100]} />
         <meshStandardMaterial
@@ -40,7 +37,7 @@ const TexturedSpheres = () => {
           roughnessMap={roughnessMap}
           displacementScale={0.0}
         />
-      </mesh>
+      </mesh> */}
     </>
   )
 }
@@ -50,7 +47,7 @@ const Home: NextPage = () => {
 
   return (
     <div className={style.container}>
-      <Canvas>
+      <Canvas shadows>
         {testing && (
           <>
             <Stats />
@@ -59,9 +56,9 @@ const Home: NextPage = () => {
           </>
         )}
         <OrbitControls />
-        <ambientLight intensity={0.3} />
-        <directionalLight color="red" position={[0, 8, 5]} />
+        <Lights isTesting={testing} />
         <TexturedSpheres />
+        <Ground />
       </Canvas>
     </div>
   )
